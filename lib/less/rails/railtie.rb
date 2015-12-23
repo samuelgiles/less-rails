@@ -16,7 +16,7 @@ module Less
       end
 
       initializer 'less-rails.before.load_config_initializers', :before => :load_config_initializers, :group => :all do |app|
-        app.assets.register_preprocessor 'text/css', ImportProcessor
+        app.assets.register_preprocessor 'text/css', ImportProcessor if app.assets
         Sprockets.register_preprocessor 'text/css', ImportProcessor if Sprockets.respond_to?('register_preprocessor')
 
         config.assets.configure do |env|
